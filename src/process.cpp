@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+// #include <iostream>
 #include "linux_parser.h"
 
 #include "process.h"
@@ -10,6 +11,8 @@
 using std::string;
 using std::to_string;
 using std::vector;
+
+// #define printVariableNameAndValue(x) std::cout<<"The name of variable **"<<(#x)<<"** and the value of variable is => "<<x<<"\n"
 
 // DONE: Return this process's ID
 int Process::Pid() { return this->pid; }
@@ -35,5 +38,5 @@ long int Process::UpTime() { return LinuxParser::UpTime(this->pid); }
 // DONE: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
 bool Process::operator<(Process const& a) const {
-  return std::stof(this->ram) < std::stof(a.ram) ? true : false;
+  return std::stod(this->ram) < std::stod(a.ram);
 }

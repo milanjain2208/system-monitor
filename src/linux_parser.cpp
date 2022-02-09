@@ -227,11 +227,22 @@ string LinuxParser::Ram(int pid) {
       string key, value;
       std::istringstream linestream(line);
       linestream >> key >> value;
-      if (key == "VmSize:") {
-        float mem = std::stol(value) / 1000.0;
-        string mem_str = to_string(mem);
-        mem_str.erase(mem_str.find('.') + 3);
-        return mem_str;
+      if (key == "VmRSS:") { //using VmRss instead of VmSize because VmRSS gives the exact physical memory being used as a part of Physical RAM.
+        int len =value.length();
+        string mem;
+        if (len == 1) {
+          mem = "0.00" + value;
+        }
+        else if(len == 2) {
+          mem = "0.0" + value;
+        }
+        else if (len == 3) {
+          mem = "0." + value;
+        }
+        else {
+          mem = value.substr(0,len-3) + "." + value.substr(len-3);
+        }
+        return mem;
       }
     }
   }
