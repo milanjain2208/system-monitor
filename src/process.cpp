@@ -12,7 +12,8 @@ using std::string;
 using std::to_string;
 using std::vector;
 
-// #define printVariableNameAndValue(x) std::cout<<"The name of variable **"<<(#x)<<"** and the value of variable is => "<<x<<"\n"
+// #define printVariableNameAndValue(x) std::cout<<"The name of variable
+// **"<<(#x)<<"** and the value of variable is => "<<x<<"\n"
 
 // DONE: Return this process's ID
 int Process::Pid() { return this->pid; }
